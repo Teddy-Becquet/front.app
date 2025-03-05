@@ -1,18 +1,13 @@
-alert("coucou");
-
-
-
-
-// Fetch the ranking data from the API
-fetch('http://192.168.64.175/classement')
+// Récupérer les données de classement depuis l'API
+fetch('http://192.168.64.175:9100/classement')
   .then(response => response.json())
   .then(data => {
     console.log(data);
-    // Assuming 'data' is an array of rankings
+    // En supposant que 'data' soit un tableau de classements
     const classement = document.createElement('ul');
     data.forEach(item => {
       const listItem = document.createElement('li');
-      listItem.textContent = `${item.team}: ${item.points} points`;
+      listItem.textContent = `${item.nom}: ${item.points} points`;
       classement.appendChild(listItem);
     });
     document.body.appendChild(classement);
